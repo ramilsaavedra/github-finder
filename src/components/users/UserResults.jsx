@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 
 function UserResults() {
+    const [users, setUsers] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
+
     useEffect(() => {
         fetchUsers()
     }, [])
@@ -15,12 +18,25 @@ function UserResults() {
 
         const data = await response.json()
        
-        console.log(data, 'data')
+        setUsers(data)
+        setIsLoading(false)
     }
 
-  return (
-    <div>UserResults</div>
-  )
+    if(!isLoading){
+        return (
+            <div className='grid grid-cols-1 gap-8 xl:trid-cols-4 lg:grid-cols-3 md:grid-cols-2'>
+                {users.map((user) => (
+                    <h3>{user.login}</h3>
+                ))
+                    
+                }
+            </div>
+          )
+    } else {
+        return (
+            <h3>Loading...</h3>
+        )
+    }
 }
 
 export default UserResults
