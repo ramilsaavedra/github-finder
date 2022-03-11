@@ -5,10 +5,10 @@ import GithubContext from '../../context/github/GithubContext'
 
 
 function UserResults() {
-    const { users, isLoading, fetchUsers } = useContext(GithubContext)
+    const { users, isLoading } = useContext(GithubContext)
 
     useEffect(() => {
-        fetchUsers()
+        // fetchUsers()
     }, [])
 
     if(!isLoading){
