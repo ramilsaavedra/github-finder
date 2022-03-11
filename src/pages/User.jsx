@@ -53,7 +53,7 @@ function User() {
                     <h2 className="card-title mb-0">
                       {name}  
                     </h2>
-                    <p>{login}</p>  
+                    <span>{login}</span>  
                   </div>
               </div>  
             </div>
@@ -77,7 +77,30 @@ function User() {
                   </a>
                 </div>
               </div>
-
+              <div className="w-full rounded-lg shadow-md bg-base-100 stats">
+                {location && (
+                  <div className="stat">
+                    <div className="stat-title text-md">
+                      Location
+                    </div>
+                    <div className="text-lg stat-value">
+                      {location}
+                    </div>
+                  </div>
+                )}
+                {blog &&
+                  <div className="stat">
+                    <div className="stat-title text-md">
+                      Website
+                    </div>
+                    <div className="text-lg stat-value">
+                      <a href={`https://${blog}`} target='_blank' rel='noreferrer'>
+                        {blog}
+                      </a>
+                    </div>
+                  </div>
+                }
+              </div>
             </div>
           </div>
         </div>
