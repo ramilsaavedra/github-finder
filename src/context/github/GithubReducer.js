@@ -4,7 +4,7 @@ const githubReducer = (state, action) => {
             return {
                 ...state,
                 user: action.payload,
-                loading: false
+                isLoading: false
             }
 
         case 'GET_USERS':
