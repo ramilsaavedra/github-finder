@@ -6,7 +6,7 @@ function UserSearch() {
     
     const handleChange = (e) => setText(e.target.value)
 
-    const { users, searchUsers } = useContext(GithubContext)
+    const { users, searchUsers, clearUsers } = useContext(GithubContext)
 
     const handleSubmit = (e)  => {
         e.preventDefault()
@@ -40,7 +40,7 @@ function UserSearch() {
             </div>
             <div>
                 {users.length > 0 &&
-                    <button className="btn btn-ghost btn-lg">
+                    <button onClick={clearUsers} className="btn btn-ghost btn-lg">
                         Clear    
                     </button>
                 }
