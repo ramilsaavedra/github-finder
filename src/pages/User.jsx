@@ -11,9 +11,9 @@ function User() {
     const params = useParams()
 
     useEffect(() => {
-      console.log(params)
       getUser(params.login)
       getUserRepos(params.login)
+      // eslinst-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const {
