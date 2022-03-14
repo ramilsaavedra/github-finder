@@ -1,17 +1,19 @@
 import React, { useEffect, useContext } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import RepoList from '../components/repos/RepoList'
 import Spinner from '../components/layout/Spinner'
 import GithubContext from '../context/github/GithubContext'
-import { FaCodepen, FaStore, FaUserFriends, FaUsers} from 'react-icons/fa'
+import { FaCodepen, FaStore, FaUserFriends, FaUsers } from 'react-icons/fa'
 
 function User() {
-    const { getUser, user, isLoading } = useContext(GithubContext)
+    const { getUser, user, isLoading, getUserRepos, repos } = useContext(GithubContext)
 
     const params = useParams()
 
     useEffect(() => {
       console.log(params)
       getUser(params.login)
+      getUserRepos(params.login)
     }, [])
 
     const {
@@ -164,7 +166,10 @@ function User() {
                 {public_gists}
               </div>
             </div>
+
           </div>
+
+          <RepoList repos={repos} />
         </div>
       </>
     )
